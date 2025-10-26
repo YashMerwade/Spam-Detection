@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SMS Spam Detector</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+</head>
+
+<body style="background-color: #e6f2ff;">
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark w-100">
+  <div class="container-fluid">
+
+    <!-- Brand -->
+    <a class="navbar-brand fw-bold fs-2" href="#">AlertBox</a>
+
+    <!-- Toggler button for mobile -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
+      aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Navbar links -->
+    <div class="collapse navbar-collapse justify-content-center" id="navbarContent">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link fw-bold fs-5 text-white" href="#about">About Project</a>
+        </li>
+        <li class="nav-item ms-3">
+          <a class="nav-link fw-bold fs-5 text-white" href="#contact">Get in Touch</a>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Social Icons -->
+    <ul class="navbar-nav d-flex flex-row ms-auto">
+      <li class="nav-item me-3">
+        <a class="nav-link text-white" href="https://github.com/yashmerwade" target="_blank">
+          <i class="bi bi-github fs-4"></i>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link text-white" href="https://linkedin.com/in/yashmerwade" target="_blank">
+          <i class="bi bi-linkedin fs-4"></i>
+        </a>
+      </li>
+    </ul>
+
+  </div>
+</nav>
+
+
+  <!-- Title -->
+  <h1 class="text-center my-3" style="font-family: 'Times New Roman', serif; font-size: 5rem; color: #4b3caa;">
+    AlertBox
+  </h1>
+
+  <!-- Input Form -->
+  <div class="container my-3" id="form">
+    <div class="card shadow-sm p-4 mb-4">
+      <form method="POST" enctype="multipart/form-data">
+        <div class="mb-3">
+          <label for="sms_text" class="form-label fw-bold" style="font-size: 1.5rem; font-family: 'Times New Roman', Times, serif;">
+            Enter SMS Text
+          </label>
+          <textarea class="form-control" id="sms_text" name="sms_text" rows="4" placeholder="Type your SMS here..."></textarea>
+        </div>
+
+        <div class="mb-3">
+          <label for="sms_image" class="form-label fw-bold" style="font-size: 1.5rem; font-family: 'Times New Roman', Times, serif;">
+            Or Upload SMS Image
+          </label>
+          <input type="file" class="form-control" id="sms_image" name="sms_image" accept="image/*">
+        </div>
+
+        <button type="submit" class="btn btn-primary w-100">Check Spam</button>
+      </form>
+    </div>
+
+    {% if prediction %}
+    <div class="row justify-content-center" id="prediction">
+      <div class="col-md-8">
+        <div class="card shadow-sm p-4 mb-4 text-center">
+          <h5 class="mb-3">Prediction</h5>
+          <span class="badge {{ 'bg-danger' if prediction=='Spam' else 'bg-success' }} p-3 fs-5">
+            {{ prediction }}
+          </span>
+        </div>
+      </div>
+    </div>
+
+    {% if sms_image %}
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <div class="card shadow-sm p-4 text-center">
+          <h5 class="mb-3">Uploaded Image</h5>
+          <img src="{{ url_for('static', filename='uploads/' + sms_image.filename) }}" class="img-fluid rounded" alt="SMS Image">
+        </div>
+      </div>
+    </div>
+    {% endif %}
+    {% endif %}
+  </div>
+
+  <!-- ============================= -->
+  <!-- 🧠 About Project Section -->
+  <!-- ============================= -->
+  <section id="about" class="py-5">
+    <div class="container">
+      <div class="card shadow-lg p-5 text-center">
+        <h2 class="fw-bold mb-4">About Project</h2>
+        <p class="fs-5">
+          <strong>AlertBox</strong> is a Machine Learning-based web application that detects
+          whether an SMS message is <span class="highlight">Spam</span> or <span class="highlight">Not Spam</span>.
+          <br><br>
+          The model analyzes text content (and optionally, text extracted from uploaded images)
+          to identify suspicious patterns and alert users before they fall for phishing or scam messages.
+          <br><br>
+          Built using <strong>Python (Flask)</strong>, <strong>Scikit-learn</strong>, and <strong>Natural Language Processing (NLP)</strong> techniques,
+          AlertBox aims to enhance digital communication security by providing an accurate and user-friendly spam detection experience.
+        </p>
+
+        <div class="mt-4">
+          <a href="https://github.com/yashmerwade" target="_blank" class="btn btn-dark me-2">
+            <i class="bi bi-github me-2"></i> GitHub Repository
+          </a>
+          <a href="#contact" class="btn btn-primary">
+            <i class="bi bi-envelope-fill me-2"></i> Contact Developer
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================= -->
+  <!-- 📬 Get in Touch Section -->
+  <!-- ============================= -->
+  <section id="contact" class="py-5">
+    <div class="container">
+      <div class="card shadow-lg p-5 text-center">
+        <h2 class="fw-bold mb-4">Get in Touch</h2>
+        <p class="fs-5">
+          Have questions, suggestions, or collaboration ideas? <br>
+          I’d love to hear from you! Feel free to connect through any of the platforms below 👇 <br> 
+          mail:- yashmerwade12@gmail.com
+        </p>
+
+        <div class="d-flex justify-content-center gap-4 mt-4">
+          <a href="mailto:yashmerwade12@gmail.com" target="_blank" class="text-decoration-none text-dark fs-3">
+            <i class="bi bi-envelope-fill"></i>
+          </a>
+          <a href="https://github.com/yashmerwade" target="_blank" class="text-decoration-none text-dark fs-3">
+            <i class="bi bi-github"></i>
+          </a>
+          <a href="https://linkedin.com/in/yash-merwade" target="_blank" class="text-decoration-none text-dark fs-3">
+            <i class="bi bi-linkedin"></i>
+          </a>
+          <a href="https://yashmerwade.github.io/Portfolio/" target="_blank" class="text-decoration-none text-dark fs-3">
+            <i class="bi bi-globe"></i>
+          </a>
+        </div>
+
+        <p class="mt-4 mb-0" style="color: #666;">
+          <strong>Made with ❤️ by Yash Merwade</strong>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,199 @@
+/* Center navbar links */
+.navbar-nav.center-links {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* Highlight for spam labels */
+.highlight {
+  background-color: #ff4d4d;
+  color: white;
+  padding: 2px 4px;
+  border-radius: 4px;
+}
+
+/* General Body */
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background: #cce7ff; /* light blue background */
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column; /* stack elements vertically */
+  align-items: center;    /* center horizontally */
+}
+
+/* Main Container */
+.container {
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  padding: 40px;
+  width: 90%;
+  max-width: 1000px;
+}
+
+/* Title */
+h1 {
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 5rem;
+  font-weight: bold;
+  color: #4b3caa;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Navbar Brand */
+.navbar-brand {
+  font-size: 2.5rem !important;
+  letter-spacing: 2px;
+}
+
+/* Common Section Gradient (Both About + Contact) */
+#about,
+#contact {
+  /* background: #ffffff; */
+  width: 100%;
+  padding: 60px 0;
+}
+
+/* Common Card Style */
+#about .card,
+#contact .card {
+  border: none;
+  border-radius: 25px; /* smooth curve */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  background: #ffffff;
+}
+
+/* Text Styling for Both Sections */
+#about p,
+#contact p {
+  line-height: 1.7;
+  color: #333;
+}
+
+/* Headings for Both Sections */
+#about h2,
+#contact h2 {
+  color: #4b3caa;
+  font-family: 'Times New Roman', serif;
+  font-weight: bold;
+}
+
+/* Hover Effects for Contact Links */
+#contact a {
+  transition: all 0.3s ease;
+}
+
+#contact a:hover {
+  color: #4b3caa !important;
+  transform: scale(1.1);
+}
+
+/* Add spacing between sections */
+#about {
+  margin-top: 60px;
+  margin-bottom: 60px;
+}
+
+/* Buttons (About Section) */
+.btn-dark, .btn-primary {
+  border-radius: 8px;
+  font-weight: 500;
+}
+
+/* Image Control */
+img {
+  max-height: 300px;
+  object-fit: contain;
+}
+/* AlertBox Form Container Styling */
+#form .card {
+    background: #ffffff;         /* White card */
+    border-radius: 25px;         /* Smooth curved edges */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);  /* Soft shadow */
+    padding: 40px;
+    color: #333;                 /* Text color */
+}
+/* ===== Mobile Responsiveness ===== */
+@media (max-width: 768px) {
+  /* Navbar links stack vertically */
+  .navbar-nav.center-links {
+    position: static;
+    transform: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10px;
+  }
+
+  .navbar-nav.center-links .nav-link {
+    margin: 5px 0 !important;
+  }
+
+  /* Navbar brand center on mobile */
+  .navbar-brand {
+    text-align: center;
+    margin: 0 auto !important;
+  }
+
+  /* Social icons center below navbar links */
+  .navbar-nav.d-flex {
+    justify-content: center;
+    margin-top: 10px;
+  }
+
+  /* AlertBox and About/Contact containers full width */
+  #form .card,
+  #about .card,
+  #contact .card {
+    padding: 30px 20px;
+  }
+
+  /* Reduce title size on mobile */
+  h1 {
+    font-size: 3rem;
+  }
+
+  /* Reduce headings in sections */
+  #about h2,
+  #contact h2 {
+    font-size: 2rem;
+  }
+
+  /* Smaller font for paragraphs */
+  #about p,
+  #contact p {
+    font-size: 1rem;
+  }
+
+  /* Buttons full width on mobile */
+  .btn {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  /* Social icons smaller */
+  #contact .fs-3 {
+    font-size: 1.5rem;
+  }
+}
+/* Mobile-specific text alignment for About & Contact */
+@media (max-width: 768px) {
+  #about p,
+  #contact p {
+    text-align: left;
+  }
+}
+/* Mobile word wrapping for About & Contact sections */
+@media (max-width: 768px) {
+  #about p,
+  #contact p {
+    word-wrap: break-word;   /* Break long words */
+    overflow-wrap: break-word;
+    hyphens: auto;           /* Optional: add hyphenation if supported */
+  }
+}
+
